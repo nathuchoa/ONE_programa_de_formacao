@@ -1,0 +1,37 @@
+<meta charset="UTF-8">
+
+<script>
+
+//Criando uma função para pular linhas para evitar a repetição da tag <code>"<br>"</code>. Além disso, utilizei o parâmetro para informar a quantidade de linhas que eu gostaria de pular, facilitando a manutenção do código.
+function pularLinha(nLinhas){
+    const docWriteLinha = "<br>".repeat(nLinhas);
+    document.write(docWriteLinha)
+};
+
+
+//Função para otimizar o uso do <code> "document.write()"</code>. 
+function mostra(mensagem){
+    document.write(mensagem)
+}
+
+var ano = new Date;
+var idadeFavio, idadeJoaquim, idadeBarney;
+
+mostra("<h1>Testando a função mostra</h1>");
+pularLinha(5);
+
+    mostra("Flávio tem " + (idadeFavio = (ano.getFullYear() - 1977 )) + " anos.");
+    pularLinha(2);
+    mostra("Joaquim tem " + (idadeJoaquim = (ano.getFullYear() - 1996)) + " anos.");
+    pularLinha(5);
+    mostra("Barney tem " + (idadeBarney = (ano.getFullYear() - 1976)) + " anos.");
+    pularLinha(1);
+    
+var soma = idadeBarney + idadeFavio + idadeJoaquim;
+var media = soma/3;
+
+    document.write("A média das idades é igual a " + media);
+    pularLinha(2);
+    document.write("A soma das idades é igual a " + soma);
+
+</script>
