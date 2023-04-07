@@ -1,0 +1,75 @@
+<meta charset="UTF-8">
+
+<style>
+    body {
+        text-align: center;
+        margin: 20vh;
+        font-family: sans-serif;
+        font-size: large;
+    }
+
+    label {
+        margin: 10px;
+        font-size: 14px;
+    }
+
+    input {
+        margin: 5px;
+        padding: 8px;
+    }
+
+    button {
+        padding: 10px;
+        margin: 15px;
+    }
+</style>
+
+<body>
+
+    <h1>Calculando IMC</h1>
+
+
+    <form>
+        <label>Insira os seus dados</label><br>
+        <input aria-label="peso" placeholder="Qual o seu peso?" id="peso" type="number" required><span>Kg</span><br>
+        <input aria-label="altura" placeholder="Qual a sua altura?" id="altura" type="number"
+            required><span>cm</span><br>
+        <button id="btn_calcular" type="submit" value="calcular">Calcular</button>
+    </form>
+
+
+    <script>
+
+var avaliacao = "";
+
+        function mostra(mensagem) {
+            alert(mensagem)
+        }
+
+        var botaoCalcular = document.getElementById(btn_calcular);
+
+        function calcular() {
+            var peso = document.getElementById("peso").value;
+            var altura = document.getElementById("altura").value/100;
+            var imc = (peso / (altura * altura)).toFixed(2);
+            if (altura !== "" && peso !== "") {
+                if (imc < 18.5) {
+                    avaliacao = ". Abaixo do peso!"
+                } else if (imc < 25) {
+                    avaliacao = ". Você está com o peso ideal!"
+                } else if (imc < 30) {
+                    avaliacao = ". Você está levemente acima do peso!"
+                } else if (imc < 35) {
+                    avaliacao = ". Cuidado! Obesidade grau I"
+                } else if (imc < 40) {
+                    avaliacao = ". Cuidado! Obesidade grau II"
+                } else {
+                    avaliacao = ". Cuidado! Obesidade grau III"
+                }
+            }
+            mostra("O seu IMC é: " + imc + avaliacao)
+        }
+
+        btn_calcular.addEventListener("click", calcular)
+    </script>
+</body>
