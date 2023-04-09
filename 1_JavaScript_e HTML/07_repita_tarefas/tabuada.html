@@ -1,0 +1,34 @@
+<meta charset="UTF-8">
+
+<style>
+    body {
+        margin-top: 20vh;
+        text-align: center;
+        font-size: 30px;
+        font-family: sans-serif;
+    }
+</style>
+
+<body>
+    <script>
+        function pularLinha(nLinhas) {
+            const docWriteLinha = "<br>".repeat(nLinhas);
+            document.write(docWriteLinha)
+        };
+
+        function mostra(frase) {
+            document.write("<big>" + frase + "</big>");
+            pularLinha(2);
+        }
+
+        var numero = parseInt(prompt("Quer a tabuada de qual número?"))
+        mostra("RESULTADO DA TABUADA DO " + numero)
+
+       for(var multiplicador = 1; multiplicador <= 10; multiplicador++ ){
+            mostra(numero + " x " + multiplicador + " = " + numero * multiplicador);
+        }
+
+        mostra("FIM")
+
+    </script>
+</body>
