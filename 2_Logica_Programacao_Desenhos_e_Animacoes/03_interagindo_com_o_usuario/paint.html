@@ -1,0 +1,73 @@
+<meta charset="UTF-8">
+
+<style>
+    body {
+        margin-top: 20vh;
+        text-align: center;
+        font-size: 30px;
+        font-family: sans-serif;
+    }
+</style>
+
+<body>
+
+    Escolha uma cor <input id="cor" type="color">
+
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+        var paleta = document.getElementById("cor")
+
+        pincel.fillStyle = 'grey';
+        pincel.fillRect(0, 0, 600, 400);
+
+        // var cores = paleta.value;
+        // var indiceCorAtual = 0; // começa com blue
+        var raio = 10;
+
+        tela.onmousemove = function (evento) {
+
+            if (desenha) {
+                var x = evento.pageX - tela.offsetLeft;
+                var y = evento.pageY - tela.offsetTop;
+
+                pincel.fillStyle = paleta.value;
+                pincel.beginPath();
+                pincel.arc(x, y, raio, 0, 2 * 3.14);
+                pincel.fill();
+            }
+
+            console.log(x + ',' + y);
+        }
+
+
+        tela.onmousedown = function () { desenha = true; }
+        tela.onmouseup = function () { desenha = false; }
+
+
+        // tela.oncontextmenu =  function () {
+        //     indiceCorAtual++;
+        //     if (indiceCorAtual >= cores.length) {
+        //         indiceCorAtual = 0; // volta para a primeira cor, azul
+        //     }
+        //     return false; // para não exibir o menu padrão do canvas
+        // }
+
+        tela.onclick = function (tamanho) {
+            if (tamanho.shiftKey && tamanho.altKey) {
+
+                alert('Só aperte uma tecla por vez, por favor!');
+
+            } else if (tamanho.shiftKey && raio + 10 <= 40) {
+                raio = raio + 10;
+
+            } else if (tamanho.altKey && raio - 5 >= 10) {
+                raio = raio - 5;
+            }
+        }
+
+    </script>
+
+</body>
